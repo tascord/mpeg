@@ -1,0 +1,26 @@
+// Math Spec (Simplified)
+// - Equation
+//   - Addition "A + B"
+//   - Subtraction "A - B"
+//   - Multiplication "A * B"
+//   - Division "A / B"
+//   - Parentheses "(Equation)"
+// ---------------------------------------------------------
+@>P@.[*/+-]@.|$P"("$_")"
+// ---------------------------------------------------------
+// MicroPEG Breakdown
+//
+// Snails (Helper Utilities):
+// @>       precedence parser for mathematical operations
+// @.       number parser
+//
+// Symbols:
+// @>P      precedence parser with label 'P'
+// @.       snail helper (Left operand)
+// [*/+-]   charset (matches any one of '*', '/', '+', '-')
+// @.       snail helper (Right operand)
+// |        or junction
+// $P       reference to label 'P'
+// "("      literal string
+// $_       reference to root (Equation)
+// ")"      literal string

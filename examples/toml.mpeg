@@ -1,0 +1,71 @@
+// TOML Spec (Simplified)
+// - Section: "[" Word "]"
+// - KeyValuePair: Word "=" Value
+// - Value: String | Number | Boolean | Array
+// ---------------------------------------------------------
+$T( @_ ($S("[" @_ @w @_ "]") | $K(@w @_ "=" @_ $V(@.|@"|@b|@B|$A("[" @_ ($v (@_ "," @_ $v)*)* @_ "]")))) @_ )*
+// ---------------------------------------------------------
+// MicroPEG Breakdown
+//
+// Snails (Helper Utilities):
+// @"       double quoted string parser
+// @.       number parser
+// @b       boolean 'true'|'false'
+// @B       case insensitive boolean 'true'|'false'
+// @w       alphanumeric word parser
+// @_       optional whitespace parser
+//
+// Symbols:
+// $T       declaration & label (Toml)
+// (        grouping (starts a standard sequence)
+// @_       snail helper (Whitespace)
+// (        grouping
+// $S       declaration & label (Section)
+// (        grouping
+// "["      literal string
+// @_       snail helper (Whitespace)
+// @w       snail helper (Section name)
+// @_       snail helper (Whitespace)
+// "]"      literal string
+// )        end grouping
+// |        or junction
+// $K       declaration & label (KeyValuePair)
+// (        grouping
+// @w       snail helper (Key)
+// @_       snail helper (Whitespace)
+// "="      literal string
+// @_       snail helper (Whitespace)
+// $V       declaration & label (Value)
+// (        grouping
+// @.       snail helper (Number)
+// |        or junction
+// @"       snail helper (String)
+// |        or junction
+// @b       snail helper (Boolean)
+// |        or junction
+// @B       snail helper (Case-insensitive Boolean)
+// |        or junction
+// $A       declaration & label (Array)
+// (        grouping
+// "["      literal string
+// @_       snail helper (Whitespace)
+// (        grouping
+// $v       reference to earlier declaration 'V'
+// (        grouping
+// @_       snail helper (Whitespace)
+// ","      literal string
+// @_       snail helper (Whitespace)
+// $v       reference to earlier declaration 'V'
+// )        end grouping
+// *        zero or more
+// )        end grouping
+// *        zero or more
+// @_       snail helper (Whitespace)
+// "]"      literal string
+// )        end grouping
+// )        end grouping
+// )        end grouping
+// )        end grouping
+// @_       snail helper (Whitespace)
+// )        end grouping
+// *        zero or more

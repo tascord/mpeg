@@ -1,0 +1,42 @@
+// YAML Spec (Simplified)
+// - Node: Word ":" (Space) Value
+// - Value: String | Number | Boolean
+// ---------------------------------------------------------
+$Y( @_ $N(@w @_ ":" @_ $V(@.|@"|@b|@B|@w) @_)* )
+// ---------------------------------------------------------
+// MicroPEG Breakdown
+//
+// Snails (Helper Utilities):
+// @"       double quoted string parser
+// @.       number parser
+// @b       boolean 'true'|'false'
+// @B       case insensitive boolean 'true'|'false'
+// @w       alphanumeric word parser
+// @_       optional whitespace parser (skips spaces, tabs, newlines)
+//
+// Symbols:
+// $Y       label (Yaml)
+// (        grouping
+// @_       snail helper (Whitespace)
+// $N       label (Node)
+// (        grouping
+// @w       snail helper (Key)
+// @_       snail helper (Whitespace)
+// ":"      literal string
+// @_       snail helper (Whitespace)
+// $V       label (Value)
+// (        grouping
+// @.       snail helper (Number)
+// |        or junction
+// @"       snail helper (String)
+// |        or junction
+// @b       snail helper (Boolean)
+// |        or junction
+// @B       snail helper (Case-insensitive Boolean)
+// |        or junction
+// @w       snail helper (Unquoted String)
+// )        end grouping
+// @_       snail helper (Whitespace)
+// )        end grouping
+// *        zero or more
+// )        end grouping

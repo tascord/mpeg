@@ -1,0 +1,44 @@
+// JSON Spec (Simplified)
+// - Object {String: Value}
+// - Array [ Value (, Value)* ]
+// - String "ASCII"
+// - Number DIGIT+("." DIGIT+)
+// - True "true"
+// - False "false"
+// - Null "null"
+// ---------------------------------------------------------
+{@":$_}|[$_(,$_)*]|@"|@.|@b|@B|"null"
+// ---------------------------------------------------------
+// MicroPEG Breakdown
+//
+// Snails (Helper Utilities):
+// @"       double quoted string parser
+// @.       number parser for floats/doubles/etc
+// @b       boolean 'true'|'false'
+// @B       case insensitive boolean 'true'|'false'
+//
+// Symbols:
+// {        grouping (sequence with implicit '{' '}' literals)
+// @"       snail helper (Object key)
+// :        literal string
+// $_       reference to root (Object value)
+// }        end grouping
+// |        or junction
+// [        grouping (sequence with implicit '[' ']' literals)
+// $_       reference to root (Array element)
+// (        grouping (starts a standard sequence)
+// ,        literal string
+// $_       reference to root (Array element)
+// )        end grouping
+// *        zero or more
+// ]        end grouping
+// |        or junction
+// @"       snail helper (String)
+// |        or junction
+// @.       snail helper (Number)
+// |        or junction
+// @b       snail helper (Boolean)
+// |        or junction
+// @B       snail helper (Case-insensitive Boolean)
+// |        or junction
+// "null"   literal string

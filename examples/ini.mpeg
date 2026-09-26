@@ -1,0 +1,29 @@
+// INI Spec (Simplified)
+// - Section: "[" Word "]"
+// - KeyValuePair: Word "=" Word
+// - Ini: Section KeyValuePair*
+// ---------------------------------------------------------
+$I( $S("[" @w "]") $K(@w "=" @w)* )
+// ---------------------------------------------------------
+// MicroPEG Breakdown
+//
+// Snails (Helper Utilities):
+// @w       alphanumeric word parser
+//
+// Symbols:
+// $I       label (Ini)
+// (        grouping (starts a standard sequence)
+// $S       label (Section)
+// (        grouping
+// "["      literal string
+// @w       snail helper (Section name)
+// "]"      literal string
+// )        end grouping
+// $K       label (KeyValuePair)
+// (        grouping
+// @w       snail helper (Key)
+// "="      literal string
+// @w       snail helper (Value)
+// )        end grouping
+// *        zero or more
+// )        end grouping

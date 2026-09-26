@@ -1,0 +1,32 @@
+// CSV Spec (Simplified)
+// - Row: Value ("," Value)*
+// - Value: Number or Double Quoted String
+// ---------------------------------------------------------
+$R($V(@.|@") ("," $V(@.|@"))*)
+// ---------------------------------------------------------
+// MicroPEG Breakdown
+//
+// Snails (Helper Utilities):
+// @"       double quoted string parser
+// @.       number parser
+//
+// Symbols:
+// $R       label (Row)
+// (        grouping (starts a standard sequence)
+// $V       label (Value)
+// (        grouping
+// @.       snail helper (Number)
+// |        or junction
+// @"       snail helper (String)
+// )        end grouping
+// (        grouping
+// ","      literal string
+// $V       label (Value)
+// (        grouping
+// @.       snail helper (Number)
+// |        or junction
+// @"       snail helper (String)
+// )        end grouping
+// )        end grouping
+// *        zero or more
+// )        end grouping
