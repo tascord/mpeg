@@ -237,7 +237,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "mparse"
+name = "mpeg-parser"
 version = "0.1.0"
 dependencies = [
  "miette",

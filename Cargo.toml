@@ -1,7 +1,10 @@
 [package]
-name = "mparse"
+name = "mpeg-parser"
+description = "An expression-based parsing engine and DSL designed for code golfing. MicroPEG compiles compact, single-string grammars into executable, AST-producing parsers."
+repository = "https://github.com/tascord/mpeg"
 version = "0.1.0"
 edition = "2024"
+license = "MIT"
 
 [dependencies]
 miette = { version = "7.6.0", features = ["fancy"] }

@@ -1,4 +1,4 @@
-use mparse::{compile, parse};
+use mpeg_parser::{compile, parse};
 use std::fs;
 
 #[test]

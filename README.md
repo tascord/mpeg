@@ -1,6 +1,18 @@
 # MicroPEG (mpeg)
 
+[![Crates.io](https://img.shields.io/crates/v/mpeg-parser.svg)](https://crates.io/crates/mpeg-parser)
+[![Docs.rs](https://docs.rs/mpeg-parser/badge.svg)](https://docs.rs/mpeg-parser)
+
 An expression-based parsing engine and DSL designed for code golfing. MicroPEG compiles compact, single-string grammars into executable, AST-producing parsers.
+
+## Installation
+
+Add this to your `Cargo.toml`:
+
+```toml
+[dependencies]
+mpeg-parser = "0.1.0"
+```
 
 ## Core Features
 
